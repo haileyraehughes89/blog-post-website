@@ -1,2 +1,4 @@
-DROP DATABASE IF EXISTS crowdfund_db;
-CREATE DATABASE crowdfund_db;
+DROP DATABASE IF EXISTS blogsite_db;
+CREATE DATABASE blogsite_db;
+
+USE blogsite_db;
