@@ -1,0 +1,62 @@
+:root {
+  --primary: #0d324d;
+  --secondary: #b4436c;
+  --tertiary: #8f95ac;
+  --quaterany: #ead7d7;
+  --fifth: #ffeeed;
+  --warning: #ef6f6c;
+}
+
+.btn {
+  background-color: var(--secondary);
+  border-color: #b4436c;
+}
+
+.navbar {
+  background-color: #0d324d;
+  border-color: #0d324d;
+}
+
+.navbar-brand {
+  color: #ffeeed;
+}
+
+.navbar-toggler {
+  background-color: #ffeeed;
+  border-color: #ffeeed;
+}
+
+.nav-link {
+  color: #ffeeed;
+}
+
+.sign-in {
+  background-color: #b4436c;
+}
+
+.login-section {
+  background-color: #0d324d;
+  padding: 50;
+}
+
+.blog-entry {
+  background-color: #ead7d7;
+  border: #b4436c;
+  color: #0d324d;
+}
+
+span {
+  color: var(--warning);
+}
+
+body::before {
+  display: block;
+  content: "";
+  height: 50px;
+}
+
+@media (min-width: 768px) {
+  .news-input {
+    width: 50%;
+  }
+}

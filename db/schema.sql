@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS blogsite_db;
-CREATE DATABASE blogsite_db;
+DROP DATABASE IF EXISTS dashboard_db;
+CREATE DATABASE dashboard_db;
 
-USE blogsite_db;
+USE dashboard_db;
