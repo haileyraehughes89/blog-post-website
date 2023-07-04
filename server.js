@@ -3,9 +3,9 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const hbs = exphbs.create({});
 const app = express();
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3003;
 const sequelize = require("./config/connection");
-const dashboardRoutes = require("./controllers/dashboard-routes");
+const routes = require("./controllers/");
 
 app.set("views", path.join(__dirname, "views"));
 app.engine("handlebars", hbs.engine);
@@ -13,7 +13,7 @@ app.set("view engine", "handlebars");
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
-app.use("/", dashboardRoutes);
+app.use("/", routes);
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () =>

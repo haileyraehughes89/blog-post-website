@@ -1,0 +1,30 @@
+[
+  {
+    "first_name": "Ivan",
+    "last_name": "Carlson",
+    "user_email": "Ivan@gmail.com",
+    "user_name": "Ivan123",
+    "password": "password123"
+  },
+  {
+    "first_name": "Hailey",
+    "last_name": "Hughes",
+    "user_email": "Hailey@gmail.com",
+    "user_name": "Hailey123",
+    "password": "password123"
+  },
+  {
+    "first_name": "Kris",
+    "last_name": "Howard",
+    "user_email": "Kris@gmail.com",
+    "user_name": "Kris123",
+    "password": "password123"
+  },
+  {
+    "first_name": "Asher",
+    "last_name": "Hendrics",
+    "user_email": "Asher@gmail.com",
+    "user_name": "Asher123",
+    "password": "password123"
+  }
+]
