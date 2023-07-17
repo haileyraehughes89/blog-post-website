@@ -81,16 +81,8 @@ router.post("/logout", withAuth, async (req, res) => {
 //* Signup route
 router.post("/signup", async (req, res) => {
   try {
-    const { first_name, last_name, user_email, user_name, password } = req.body;
-
     //* Create a new user in the database
-    const userData = await User.create({
-      first_name,
-      last_name,
-      user_email,
-      user_name,
-      password,
-    });
+    const userData = await User.create(req.body);
 
     //* Set the user's session and send a response
     req.session.save(() => {
@@ -99,8 +91,23 @@ router.post("/signup", async (req, res) => {
       res.status(200).json({ message: "Signup successful" });
     });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: "Signup failed" });
   }
+});
+
+// Delete route
+router.delete("/:id", (req, res) => {
+  // Looks for the books based on isbn given in the request parameters and deletes the instance from the database
+  User.destroy({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((deletedUser) => {
+      res.json(deletedUser);
+    })
+    .catch((err) => res.json(err));
 });
 
 module.exports = router;

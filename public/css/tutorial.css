@@ -7,6 +7,30 @@
   --warning: #ef6f6c;
 }
 
+span {
+  color: var(--warning);
+}
+
+body {
+  background-color: var(--primary);
+}
+
+form {
+  padding: 50;
+}
+
+body::before {
+  display: block;
+  content: "";
+  height: 50px;
+}
+
+@media (min-width: 768px) {
+  .news-input {
+    width: 50%;
+  }
+}
+
 .btn {
   background-color: var(--secondary);
   border-color: #b4436c;
@@ -44,19 +68,8 @@
   border: #b4436c;
   color: #0d324d;
 }
-
-span {
-  color: var(--warning);
-}
-
-body::before {
-  display: block;
-  content: "";
-  height: 50px;
-}
-
-@media (min-width: 768px) {
-  .news-input {
-    width: 50%;
-  }
+.new-post {
+  background-color: #0d324d;
+  padding: 50;
+  color: #ffeeed;
 }

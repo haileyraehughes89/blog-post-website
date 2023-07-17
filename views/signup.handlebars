@@ -1,0 +1,111 @@
+<nav class="navbar navbar-expand-sm py-3 fixed-top">
+  <div class="container">
+    <a href="#" class="navbar-brand">word<span>W</span>ise</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navmenu"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navmenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a href="#learn" class="nav-link">Homepage</a>
+        </li>
+        <li class="nav-item">
+          <a href="#questions" class="nav-link">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a href="#instructors" class="nav-link">Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!--Showcase-->
+
+<section class="login-section d-flex justify-content-center">
+  <div class="container-logins display-flex justify-content-center">
+    <div class="d-sm-flex">
+      <div class="row text-center g-4">
+        <div class="col-md">
+          <div class="card bg-secondary text-light">
+            <div class="card-body text-center">
+              <h3 class="card-title mb-3">Before you start writing</h3>
+              <h4 class="card-title mb-3">
+                Tell us a little bit more about yourself
+              </h4>
+              <form id="signUpForm">
+                <div class="input-group input-group-lg p-3">
+                  <span class="input-group-text">First Name</span>
+                  <input
+                    type="text"
+                    class="form-control"
+                    aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-lg"
+                    name="first_name"
+                    id="inputFirstName"
+                  />
+                </div>
+                <div class="input-group input-group-lg p-3">
+                  <span class="input-group-text">Last Name</span>
+                  <input
+                    type="text"
+                    class="form-control"
+                    aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-lg"
+                    name="last_name"
+                    id="inputLastName"
+                  />
+                </div>
+                <div class="input-group input-group-lg p-3">
+                  <span class="input-group-text">Email</span>
+                  <input
+                    type="email"
+                    class="form-control"
+                    aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-lg"
+                    name="user_email"
+                    id="inputEmail"
+                  />
+                </div>
+                <div class="input-group input-group-lg p-3">
+                  <span class="input-group-text">Username</span>
+                  <input
+                    type="text"
+                    class="form-control"
+                    aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-lg"
+                    name="user_name"
+                    id="userName"
+                  />
+                </div>
+                <div class="input-group input-group-lg p-3">
+                  <span class="input-group-text">Password</span>
+                  <input
+                    type="password"
+                    class="form-control"
+                    aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-lg"
+                    name="user_password"
+                    id="inputPassword"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  class="btn btn-dark"
+                  id="signUpButton"
+                >Sign Up</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="/js/login.js"></script>
