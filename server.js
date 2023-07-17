@@ -26,8 +26,8 @@ app.get("/", (req, res) => {
   res.render("layouts/main");
 });
 
-app.get("/loggedIn", (req, res) => {
-  res.render("loggedinDashboard");
+app.get("/home", (req, res) => {
+  res.render("home");
 });
 
 app.get("/signup", (req, res) => {
