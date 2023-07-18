@@ -22,9 +22,6 @@ app.use(
     saveUninitialized: true,
   })
 );
-app.get("/", (req, res) => {
-  res.render("layouts/main");
-});
 
 app.get("/home", (req, res) => {
   res.render("home");
