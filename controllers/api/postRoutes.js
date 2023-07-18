@@ -33,21 +33,19 @@ router.get("/", async (req, res) => {
 // });
 
 //* New Post route
-router.post("/create", async (req, res) => {
-  try {
-    //* Create a new Post in the database
-    const postData = await Post.create(req.body);
-
-    //* Set the user's session and send a response
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
-      res.status(200).json({ message: "Post successful" });
+router.post("/", async (req, res) => {
+  Post.create(req.body)
+    .then((post) => {
+      res.status(200).json(post);
+      console.log("goal creation success");
+    })
+    .then((postIds) => {
+      res.status(200).json(postIds);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(400).json(err);
     });
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: "Post failed" });
-  }
 });
 
 module.exports = router;
