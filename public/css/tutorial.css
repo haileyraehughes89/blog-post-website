@@ -73,3 +73,7 @@ body::before {
   padding: 50;
   color: #ffeeed;
 }
+
+#exampleModal {
+  display: none;
+}

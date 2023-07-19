@@ -11,9 +11,10 @@ fetch("/", {
   })
   .then((data) => {
     console.log(data);
-    // Redirect or show a success message to the user
   })
   .catch((error) => {
     console.log(error);
-    // Show an error message to the user
   });
+
+// remember to change this when I change id name
+const modal = document.getElementById("exampleModal");
