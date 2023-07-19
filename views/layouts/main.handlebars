@@ -3,6 +3,10 @@
     <meta charset="UTF-8" />
     <title>User Dashboard</title>
     <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
@@ -33,19 +37,18 @@
         <div class="collapse navbar-collapse" id="navmenu">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a
-                href="#learn"
-                class="nav-link"
-                data-toggle="modal"
-                data-target="#exampleModal"
-                data-whatever="@mdo"
-              >Homepage</a>
+              <a href="#learn" class="nav-link">Homepage</a>
             </li>
             <li class="nav-item">
               <a href="#questions" class="nav-link">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a href="" class="nav-link">Login</a>
+              <a
+                href="#questions"
+                class="nav-link"
+                data-toggle="modal"
+                data-target="#loginModal"
+              >Login</a>
             </li>
           </ul>
         </div>
@@ -55,6 +58,7 @@
     <!-- Content from child templates will be inserted here -->
     {{{body}}}
 
+{{> modal}}
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
       crossorigin="anonymous"
@@ -66,6 +70,9 @@
     <script
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
     ></script>
-    <script src="/js/home.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/handlebars@4.7.7/dist/handlebars.min.js"
+    ></script>
+
   </body>
 </html>

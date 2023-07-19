@@ -74,6 +74,11 @@ body::before {
   color: #ffeeed;
 }
 
-#exampleModal {
-  display: none;
+.modal-content {
+  background-color: #ead7d7;
+}
+
+.input-group-text {
+  background-color: #0d324d;
+  color: #ead7d7;
 }
