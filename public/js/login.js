@@ -1,30 +1,22 @@
-const signUpButton = document.getElementById("signUpButton");
-const signUpForm = document.getElementById("signUpForm");
-const firstName = document.getElementById("inputFirstName");
-const lastName = document.getElementById("inputLastName");
-const email = document.getElementById("inputEmail");
-const userName = document.getElementById("userName");
+const loginButton = document.getElementById("loginButton");
+const loginForm = document.getElementById("loginForm");
+const userName = document.getElementById("inputUserName");
+const password = document.getElementById("inputPassword");
 
-signUpForm.addEventListener("submit", function (event) {
+loginForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
-  const first_name = firstName.value;
-  const last_name = lastName.value;
-  const user_email = email.value;
   const user_name = userName.value;
-  const password = document.getElementById("inputPassword").value;
+  const password = password.value;
 
   const formData = {
-    first_name,
-    last_name,
-    user_email,
     user_name,
     password,
   };
 
   console.log(formData);
 
-  fetch("api/users/signup", {
+  fetch("/api/users/login", {
     method: "POST",
     body: JSON.stringify(formData),
     headers: {
@@ -34,10 +26,10 @@ signUpForm.addEventListener("submit", function (event) {
     .then((response) => {
       if (response.ok) {
         console.log("success in clientside");
-        document.location.replace("/loggedIn");
+        document.location.replace("/");
         return response.json();
       } else {
-        throw new Error("Signup failed");
+        throw new Error("Login failed");
       }
     })
     .then((data) => {

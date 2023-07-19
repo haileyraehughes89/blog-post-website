@@ -19,7 +19,7 @@ router.get("/:id", async (req, res) => {
     const userData = await User.findByPk(req.params.id, {});
 
     if (!userData) {
-      res.status(404).json({ message: "No goal found with that id!" });
+      res.status(404).json({ message: "No user found with that id!" });
       return;
     }
 
@@ -33,13 +33,13 @@ router.get("/:id", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     const userData = await User.findOne({
-      where: { username: req.body.username },
+      where: { user_name: req.body.user_name },
     });
 
     if (!userData) {
       res
         .status(400)
-        .json({ message: "Incorrect email or password, please try again" });
+        .json({ message: "Incorrect username , please try again" });
       return;
     }
 
@@ -48,7 +48,7 @@ router.post("/login", async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: "Incorrect email or password, please try again" });
+        .json({ message: "Incorrect  password, please try again" });
       return;
     }
 
