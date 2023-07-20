@@ -35,6 +35,10 @@ app.get("/newpost", (req, res) => {
   res.render("newPost");
 });
 
+app.get("/dashboard", (req, res) => {
+  res.render("dashboard");
+});
+
 app.use("/", routes);
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () =>
