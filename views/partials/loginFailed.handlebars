@@ -1,54 +1,19 @@
-<div
-  class="modal fade"
-  id="loginModal"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="loginModalLabel"
-  aria-hidden="true"
+{{! <button
+  type="button"
+  class="btn btn-secondary"
+  data-bs-container="body"
+  data-bs-toggle="popover"
+  data-bs-content="Disabled popover"
+  id="logInButton"
 >
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="loginModalLabel">Login Failed</h5>
-        <form class="form login-form">
-      
-      </div>
-      <div class="modal-body">
-          <div class="input-group input-group-lg p-3">
-            <span class="input-group-text">User Name</span>
-            <input
-              type="text"
-              class="form-control"
-              aria-label="Sizing example input"
-              aria-describedby="inputGroup-sizing-lg"
-              name="user_email"
-              id="inputUserName"
-            />
-          </div>
-          <div class="input-group input-group-lg p-3">
-            <span class="input-group-text">Password</span>
-            <input
-              type="password"
-              class="form-control"
-              aria-label="Sizing example input"
-              aria-describedby="inputGroup-sizing-lg"
-              name="user_password"
-              id="inputPassword"
-            />
-          </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-dark"  data-dismiss="modal" id="logInButton">Log In</button>
-        <button
-          type="button"
-          class="btn btn-secondary"
-          data-dismiss="modal"
-          id="signUpButton"
-        >Sign Up</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+  Login
+</button> }}
 
-<script src="/js/login.js"></script>
+<button
+  type="button"
+  class="btn btn-dark"
+  data-bs-toggle="popover"
+  data-bs-title="Popover title"
+  data-bs-trigger="focus"
+  id="logInButton"
+>Login</button>

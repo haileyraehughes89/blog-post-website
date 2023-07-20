@@ -7,49 +7,63 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const loginButton = document.getElementById("logInButton");
 
-  // Add a click event listener to the "Log In" button
   loginButton.addEventListener("click", function () {
-    loginFormHandler(); // Call the logClicked function
+    loginFormHandler();
   });
 
   // ...
 });
 
 const loginFormHandler = async (event) => {
-  console.log("log in clicked");
+  //   console.log("log in clicked");
   const userName = document.getElementById("inputUserName");
 
   const user_name = userName.value;
   const password = document.getElementById("inputPassword").value;
-
-  if (user_name && password) {
-    // Send a POST request to the API endpoint
-
-    const response = await fetch("/api/users/login", {
-      method: "POST",
-      body: JSON.stringify({ user_name, password }),
-      headers: { "Content-Type": "application/json" },
-    });
-
-    if (response.ok) {
-      // If successful, redirect the browser to the profile page
-      document.location.replace("/dashboard");
-    } else {
-      console.log("not working");
-      showAlert("oops", "danger");
-    }
+  if (!user_name && !password) {
+    showPopover("Username and Password required for login");
+    return;
   }
+
+  if (!user_name) {
+    showPopover("Username missing. Please try again.");
+    return;
+  }
+
+  if (!password) {
+    showPopover("Password missing. Please try again.");
+    return;
+  }
+  if (user_name && password)
+    try {
+      const response = await fetch("/api/users/login", {
+        method: "POST",
+        body: JSON.stringify({ user_name, password }),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (response.ok) {
+        document.location.replace("/dashboard");
+      } else {
+        console.log("not working");
+        showPopover("Username or Password incorrect. Please try again.");
+      }
+    } catch (error) {
+      console.log("error");
+    }
 };
 
-// document.addEventListener("DOMContentLoaded", function () {
-//   // ...
+const showPopover = (message) => {
+  const loginButton = document.getElementById("logInButton");
+  loginButton.setAttribute("data-bs-content", message);
+  const popover = new bootstrap.Popover(loginButton);
+  if (popover) {
+    popover.update();
+    popover.show();
+  } else {
+    popover = new bootstrap.Popover(loginButton);
+    popover.show();
 
-//   const loginButton = document.getElementById("logInButton");
-
-//   // Add a click event listener to the "Log In" button
-//   loginButton.addEventListener("click", function () {
-//     login(); // Call the logClicked function
-//   });
-
-//   // ...
-// });
+    new bootstrap.Popover(loginButton);
+  }
+};
