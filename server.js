@@ -23,23 +23,7 @@ app.use(
   })
 );
 
-app.get("/home", (req, res) => {
-  res.render("home");
-});
-
-app.get("/signup", (req, res) => {
-  res.render("signup");
-});
-
-app.get("/newpost", (req, res) => {
-  res.render("newPost");
-});
-
-app.get("/dashboard", (req, res) => {
-  res.render("dashboard");
-});
-
-app.use("/", routes);
+app.use(routes);
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () =>
     console.log("Server listening on: http://localhost:" + PORT)

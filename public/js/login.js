@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 const loginFormHandler = async (event) => {
-  //   console.log("log in clicked");
+  console.log("log in clicked");
   const userName = document.getElementById("inputUserName");
 
   const user_name = userName.value;
@@ -44,6 +44,9 @@ const loginFormHandler = async (event) => {
 
       if (response.ok) {
         document.location.replace("/dashboard");
+        const userData = await response.json();
+        const userId = userData.user.id;
+        console.log(userId + "is logged in");
       } else {
         console.log("not working");
         showPopover("Username or Password incorrect. Please try again.");

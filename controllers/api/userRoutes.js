@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const User = require("../../models/User");
+const Post = require("../../models/Post");
 const withAuth = require("../../utils/auth");
 
 //get users
@@ -51,13 +52,24 @@ router.post("/login", async (req, res) => {
         .json({ message: "Incorrect  password, please try again" });
       return;
     }
+    try {
+      const posts = await Post.findAll({
+        where: { userId: userData.id },
+      });
 
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
+      req.session.save(() => {
+        req.session.user_id = userData.id;
+        req.session.logged_in = true;
 
-      res.json({ user: userData, message: "You are now logged in!" });
-    });
+        res.json({
+          user: userData,
+          message: "You are now logged in!",
+          posts: posts.map((post) => post.toJSON()),
+        });
+      });
+    } catch (err) {
+      res.status(400).json(err);
+    }
   } catch (err) {
     res.status(400).json(err);
   }
