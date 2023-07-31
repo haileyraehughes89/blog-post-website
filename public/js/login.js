@@ -1,17 +1,8 @@
-function signupClicked() {
-  console.log("sign up clicked");
-}
-
 document.addEventListener("DOMContentLoaded", function () {
-  // ...
-
   const loginButton = document.getElementById("logInButton");
-
   loginButton.addEventListener("click", function () {
     loginFormHandler();
   });
-
-  // ...
 });
 
 const loginFormHandler = async (event) => {
@@ -43,7 +34,7 @@ const loginFormHandler = async (event) => {
       });
 
       if (response.ok) {
-        document.location.replace("/dashboard");
+        document.location.replace("/");
         const userData = await response.json();
         const userId = userData.user.id;
         console.log(userId + "is logged in");

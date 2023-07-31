@@ -35,35 +35,21 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/dashboard", withAuth, async (req, res) => {
-  console.log("backend working");
-  const loggedUserId = req.session.user_id;
-  console.log(loggedUserId);
-  // Find all recent posts associated with the logged-in user
-  // const recentPosts = await Post.findAll({
-  //   include: [
-  //     {
-  //       model: User,
-  //       attributes: [
-  //         "id",
-  //         "first_name",
-  //         "last_name",
-  //         "user_email",
-  //         "user_name",
-  //         // Note: You might want to exclude the "password" attribute from the response for security reasons.
-  //       ],
-  //     },
-  //   ],
-  //   where: {
-  //     UserId: loggedUserId, // Filter by the logged-in user's ID
-  //   },
-  try {
-    const posts = await Post.findAll({
-      where: { userId: loggedUserId },
-    });
-    console.log(posts);
-    res.render("dashboard", { posts: posts.map((post) => post.toJSON()) });
-  } catch (err) {
-    res.status(400).json(err);
+  if (req.session.logged_in) {
+    console.log("backend working");
+    const loggedUserId = req.session.user_id;
+    console.log(loggedUserId);
+    try {
+      const posts = await Post.findAll({
+        where: { userId: loggedUserId },
+      });
+      console.log(posts);
+      res.render("dashboard", { posts: posts.map((post) => post.toJSON()) });
+    } catch (err) {
+      res.status(400).json(err);
+    }
+  } else {
+    console.log("backend successfully caught not logged in");
   }
 });
 
