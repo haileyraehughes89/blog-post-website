@@ -43,12 +43,16 @@
               <a href="#questions" class="nav-link" id="dashboardButton">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a
-                href="#questions"
+              {{#if logged_in}}
+            <button class='no-button' id='logout'>Logout</button>
+            <button class='no-button' id='logout'>New Post</button>
+          {{else}}
+            <a href="/login"
                 class="nav-link"
                 data-toggle="modal"
                 data-target="#loginModal"
               >Login</a>
+          {{/if}}
             </li>
           </ul>
         </div>
@@ -75,5 +79,8 @@
       src="https://cdn.jsdelivr.net/npm/handlebars@4.7.7/dist/handlebars.min.js"
     ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+{{#if logged_in}}
+      <script src='/js/logout.js'></script>
+    {{/if}}
   </body>
 </html>

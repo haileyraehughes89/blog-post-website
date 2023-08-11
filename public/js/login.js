@@ -34,7 +34,7 @@ const loginFormHandler = async (event) => {
       });
 
       if (response.ok) {
-        document.location.replace("/");
+        document.location.replace("/dashboard");
         const userData = await response.json();
         const userId = userData.user.id;
         console.log(userId + "is logged in");

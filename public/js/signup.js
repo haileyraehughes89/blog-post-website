@@ -34,7 +34,7 @@ signUpForm.addEventListener("submit", function (event) {
     .then((response) => {
       if (response.ok) {
         console.log("success in clientside");
-        document.location.replace("/loggedIn");
+        document.location.replace("/dashboard");
         return response.json();
       } else {
         throw new Error("Signup failed");

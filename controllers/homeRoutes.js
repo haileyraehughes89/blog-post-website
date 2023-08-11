@@ -44,7 +44,10 @@ router.get("/dashboard", withAuth, async (req, res) => {
         where: { userId: loggedUserId },
       });
       console.log(posts);
-      res.render("dashboard", { posts: posts.map((post) => post.toJSON()) });
+      res.render("dashboard", {
+        posts: posts.map((post) => post.toJSON()),
+        logged_in: true,
+      });
     } catch (err) {
       res.status(400).json(err);
     }
@@ -67,6 +70,10 @@ router.get("/home", (req, res) => {
 
 router.get("/signup", (req, res) => {
   res.render("signup");
+});
+
+router.get("/dashboard", (req, res) => {
+  res.render("dashboard");
 });
 
 router.get("/newpost", (req, res) => {
