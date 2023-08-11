@@ -37,7 +37,7 @@
         <div class="collapse navbar-collapse" id="navmenu">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a href="#learn" class="nav-link">Homepage</a>
+              <a href="/home" class="nav-link">Homepage</a>
             </li>
             <li class="nav-item">
               <a href="#questions" class="nav-link" id="dashboardButton">Dashboard</a>
@@ -45,7 +45,7 @@
             <li class="nav-item">
               {{#if logged_in}}
             <button class='no-button' id='logout'>Logout</button>
-            <button class='no-button' id='logout'>New Post</button>
+            <a href = "/newPost"><button class='no-button' id='newPost'>New Post</button></a>
           {{else}}
             <a href="/login"
                 class="nav-link"
@@ -81,6 +81,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"></script>
 {{#if logged_in}}
       <script src='/js/logout.js'></script>
+      <script src='/js/newPost.js'></script>
     {{/if}}
   </body>
 </html>
