@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Post = require("../../models/Post");
+const withAuth = require("../../utils/auth");
 
 //Get all posts:
 router.get("/", async (req, res) => {
@@ -13,37 +14,40 @@ router.get("/", async (req, res) => {
     console.log("post request failed");
   }
 });
-
-//post route to make a new goal
-router.post("/", async (req, res) => {
-  Goal.create(req.body)
-    .then((goal) => {
-      res.status(200).json(goal);
-      console.log("goal creation success");
-    })
-    .then((goalIds) => {
-      res.status(200).json(goalIds);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(400).json(err);
+//most recent post
+router.get("/mostRecent", async (req, res) => {
+  try {
+    const mostRecentPost = await Post.findOne({
+      order: [["date", "DESC"]],
     });
+
+    if (mostRecentPost) {
+      res.json(mostRecentPost);
+    } else {
+      res.status(404).json({ message: "No recent posts found." });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal server error." });
+  }
 });
 
 //* New Post route
 router.post("/", async (req, res) => {
-  Post.create(req.body)
-    .then((post) => {
-      res.status(200).json(post);
-      console.log("goal creation success");
-    })
-    .then((postIds) => {
-      res.status(200).json(postIds);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(400).json(err);
+  const { title, content, userId } = req.body; // Extract data from request body
+
+  try {
+    const newPost = await Post.create({
+      title,
+      content,
+      userId, // Assign the userId
     });
+
+    res.status(201).json(newPost);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error);
+  }
 });
 
 module.exports = router;

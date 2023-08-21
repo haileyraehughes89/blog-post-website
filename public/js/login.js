@@ -37,6 +37,7 @@ const loginFormHandler = async (event) => {
         document.location.replace("/dashboard");
         const userData = await response.json();
         const userId = userData.user.id;
+        localStorage.setItem("userId", userId);
         console.log(userId + "is logged in");
       } else {
         console.log("not working");

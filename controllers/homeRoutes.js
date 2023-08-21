@@ -36,14 +36,12 @@ router.get("/", async (req, res) => {
 
 router.get("/dashboard", withAuth, async (req, res) => {
   if (req.session.logged_in) {
-    console.log("backend working");
     const loggedUserId = req.session.user_id;
-    console.log(loggedUserId);
+
     try {
       const posts = await Post.findAll({
         where: { userId: loggedUserId },
       });
-      console.log(posts);
       res.render("dashboard", {
         posts: posts.map((post) => post.toJSON()),
         logged_in: true,

@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   dashboardButton.addEventListener("click", function () {
     dashboardHandler();
+    recentPostHandler();
   });
 });
 const dashboardHandler = async (event) => {
