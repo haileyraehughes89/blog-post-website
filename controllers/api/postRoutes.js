@@ -34,13 +34,13 @@ router.get("/mostRecent", async (req, res) => {
 
 //* New Post route
 router.post("/", async (req, res) => {
-  const { title, content, userId } = req.body; // Extract data from request body
+  const { title, content, userId } = req.body; 
 
   try {
     const newPost = await Post.create({
       title,
       content,
-      userId, // Assign the userId
+      userId, 
     });
 
     res.status(201).json(newPost);
@@ -49,5 +49,26 @@ router.post("/", async (req, res) => {
     res.status(500).json(error);
   }
 });
+
+router.delete("/:id", (req, res) => {
+ 
+  Post.destroy({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((deletedPost) => {
+      if (deletedPost === 1) {
+        res.status(200).json({ message: "Post Deleted" });
+      } else {
+        res.status(404).json({ message: "Post not found" });
+      }
+    })
+    .catch((err) => {
+      console.error(err); 
+      res.status(500).json({ message: "Internal Server Error" });
+    });
+});
+
 
 module.exports = router;
