@@ -93,10 +93,10 @@ router.post("/logout", withAuth, async (req, res) => {
 //* Signup route
 router.post("/signup", async (req, res) => {
   try {
-    //* Create a new user in the database
+   
     const userData = await User.create(req.body);
 
-    //* Set the user's session and send a response
+    
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
@@ -110,7 +110,7 @@ router.post("/signup", async (req, res) => {
 
 // Delete route
 router.delete("/:id", (req, res) => {
-  // Looks for the books based on isbn given in the request parameters and deletes the instance from the database
+  
   User.destroy({
     where: {
       id: req.params.id,
@@ -118,7 +118,13 @@ router.delete("/:id", (req, res) => {
   })
     .then((deletedUser) => {
       res.json(deletedUser);
-    })
+      if (deletedUser === 1) {
+        res.status(200).json({ message: "User Deleted" })
+    } else {
+      res.status(404).json({ message: "User not found" });
+    }
+  })
+
     .catch((err) => res.json(err));
 });
 
