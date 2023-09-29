@@ -50,8 +50,30 @@ router.post("/", async (req, res) => {
   }
 });
 
+// Updates book based on its isbn
+router.put('/:id', (req, res) => {
+  Post.update(
+    {
+      title: req.body.title,
+      content: req.body.content,
+    },
+    {
+      where: {
+        id: req.params.id,
+      },
+    }
+  )
+    .then((updatedPost) => {
+      if (updatedPost) {
+        res.status(200).json({ message: "Post Updated" });
+      } else {
+        res.status(404).json({ message: "Post not found" });
+      }
+    })
+    .catch((err) => res.json(err));
+});
+
 router.delete("/:id", (req, res) => {
- 
   Post.destroy({
     where: {
       id: req.params.id,
