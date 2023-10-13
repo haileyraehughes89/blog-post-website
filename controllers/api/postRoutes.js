@@ -50,7 +50,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// Updates book based on its isbn
+// Update Post Route
 router.put('/:id', (req, res) => {
   Post.update(
     {
